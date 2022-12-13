@@ -41,6 +41,26 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  _handleDragUpdate(DragUpdateDetails details) {
+    _animationController!.value -= (details.primaryDelta! / maxHeight);
+  }
+
+  _handleDragEnd(DragEndDetails details) {
+    if (_animationController!.isAnimating ||
+        _animationController!.status == AnimationStatus.completed) return;
+
+    final double flingVelocity =
+        details.velocity.pixelsPerSecond.dy / maxHeight;
+    if (flingVelocity < 0.0) {
+      _animationController!.fling(velocity: math.max(2.0, -flingVelocity));
+    } else if (flingVelocity > 0.0) {
+      _animationController!.fling(velocity: math.min(-2.0, -flingVelocity));
+    } else {
+      _animationController!
+          .fling(velocity: _animationController!.value < 0.5 ? -2.0 : 2.0);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -76,25 +96,5 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
         ),
       ),
     );
-  }
-
-  void _handleDragUpdate(DragUpdateDetails details) {
-    _animationController!.value -= (details.primaryDelta! / maxHeight);
-  }
-
-  void _handleDragEnd(DragEndDetails details) {
-    if (_animationController!.isAnimating ||
-        _animationController!.status == AnimationStatus.completed) return;
-
-    final double flingVelocity =
-        details.velocity.pixelsPerSecond.dy / maxHeight;
-    if (flingVelocity < 0.0) {
-      _animationController!.fling(velocity: math.max(2.0, -flingVelocity));
-    } else if (flingVelocity > 0.0) {
-      _animationController!.fling(velocity: math.min(-2.0, -flingVelocity));
-    } else {
-      _animationController!
-          .fling(velocity: _animationController!.value < 0.5 ? -2.0 : 2.0);
-    }
   }
 }
