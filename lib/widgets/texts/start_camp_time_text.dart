@@ -4,18 +4,18 @@ import 'package:provider/provider.dart';
 import 'package:travel_animation/providers/page_offset_provider.dart';
 import 'package:travel_animation/utils/app_colors.dart';
 
-import '../utils/constants.dart';
+import '../../utils/constants.dart';
 
-class TimeText extends StatelessWidget {
-  const TimeText({super.key});
+class StartCampTimeText extends StatelessWidget {
+  const StartCampTimeText({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Consumer<PageOffsetProvider>(
-      builder: (context, notifier, child) {
-        double opacity = math.max(0, 4 * notifier.page - 3);
+      builder: (context, provider, child) {
+        double opacity = math.max(0, 4 * provider.page - 3);
         return Positioned(
-          top: topMargin(context) + mainSquareSize(context) + 32 + 16 + 32 + 40,
+          top: topMargin(context) + mainSquareSize(context) + 16 + 32 + 40,
           width: (MediaQuery.of(context).size.width - 48) / 3,
           left: opacity * 24.0,
           child: Opacity(

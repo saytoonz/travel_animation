@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/page_offset_provider.dart';
-import '../utils/app_colors.dart';
+import '../../providers/page_offset_provider.dart';
+import '../../utils/app_colors.dart';
 
 class ShareIcon extends StatelessWidget {
   const ShareIcon({

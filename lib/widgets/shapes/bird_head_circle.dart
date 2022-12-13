@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_animation/providers/page_offset_provider.dart';
 
-import '../utils/app_colors.dart';
+import '../../utils/app_colors.dart';
 
 class BirdCircle extends StatelessWidget {
   const BirdCircle({super.key});

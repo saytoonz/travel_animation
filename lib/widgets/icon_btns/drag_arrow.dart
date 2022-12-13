@@ -2,8 +2,8 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../utils/app_colors.dart';
-import '../utils/constants.dart';
+import '../../utils/app_colors.dart';
+import '../../utils/constants.dart';
 
 class DragArrow extends StatelessWidget {
   const DragArrow({

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_animation/providers/page_offset_provider.dart';
 
-import '../utils/app_colors.dart';
-import '../utils/constants.dart';
+import '../../utils/app_colors.dart';
+import '../../utils/constants.dart';
 
 class HorizontalDots extends StatelessWidget {
   const HorizontalDots({
