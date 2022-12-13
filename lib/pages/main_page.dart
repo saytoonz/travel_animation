@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_animation/pages/leopard_page.dart';
 import 'package:travel_animation/providers/page_offset_provider.dart';
+import 'package:travel_animation/utils/app_colors.dart';
 import 'package:travel_animation/utils/constants.dart';
 import 'package:travel_animation/widgets/bird_head_circle.dart';
 import 'package:travel_animation/widgets/on_map_btn.dart';
+import 'package:travel_animation/widgets/time_text.dart';
 
 import '../widgets/bird_img.dart';
 import '../widgets/drag_arrow.dart';
+import '../widgets/horizontal_dots.dart';
 import '../widgets/indicators.dart';
 import '../widgets/leopard_img.dart';
 import '../widgets/custom_app_bar.dart';
@@ -90,6 +93,8 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                 const DragArrow(),
                 const ShareIcon(),
                 OnMapBtn(animController: _animationController),
+                const HorizontalDots(),
+                const TimeText(),
               ],
             ),
           )),
