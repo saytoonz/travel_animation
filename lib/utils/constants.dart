@@ -7,4 +7,4 @@ double mainSquareSize(BuildContext context) =>
     MediaQuery.of(context).size.height / 2;
 
 double dotsTopMargin(BuildContext context) =>
-    topMargin(context) + mainSquareSize(context) + 32 + 16 + 32 + 4;
+    topMargin(context) + mainSquareSize(context) + 32 + 16 + 4;
