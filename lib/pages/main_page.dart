@@ -5,17 +5,21 @@ import 'package:travel_animation/pages/leopard_page.dart';
 import 'package:travel_animation/providers/page_offset_provider.dart';
 import 'package:travel_animation/utils/app_colors.dart';
 import 'package:travel_animation/utils/constants.dart';
-import 'package:travel_animation/widgets/bird_head_circle.dart';
+import 'package:travel_animation/widgets/shapes/bird_head_circle.dart';
 import 'package:travel_animation/widgets/on_map_btn.dart';
-import 'package:travel_animation/widgets/time_text.dart';
+import 'package:travel_animation/widgets/texts/base_camp_text.dart';
+import 'package:travel_animation/widgets/texts/kilometer_text.dart';
+import 'package:travel_animation/widgets/texts/start_camp_time_text.dart';
 
-import '../widgets/bird_img.dart';
-import '../widgets/drag_arrow.dart';
-import '../widgets/horizontal_dots.dart';
-import '../widgets/indicators.dart';
-import '../widgets/leopard_img.dart';
+import '../widgets/images/bird_img.dart';
+import '../widgets/icon_btns/drag_arrow.dart';
+import '../widgets/shapes/horizontal_dots.dart';
+import '../widgets/shapes/indicators.dart';
+import '../widgets/images/leopard_img.dart';
 import '../widgets/custom_app_bar.dart';
-import '../widgets/share_icon.dart';
+import '../widgets/icon_btns/share_icon.dart';
+import '../widgets/texts/base_camp_time_text.dart';
+import '../widgets/texts/start_camp_text.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -94,7 +98,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
                 const ShareIcon(),
                 OnMapBtn(animController: _animationController),
                 const HorizontalDots(),
-                const TimeText(),
+                const StartCampTimeText(),
+                const StartCampText(),
+                const BaseCampText(),
+                const BaseCampTimeText(),
+                const KilometerText(),
               ],
             ),
           )),
