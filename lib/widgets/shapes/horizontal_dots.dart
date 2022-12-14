@@ -5,6 +5,7 @@ import 'package:travel_animation/providers/page_offset_provider.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/constants.dart';
+import '../map_hider.dart';
 
 class HorizontalDots extends StatelessWidget {
   const HorizontalDots({
@@ -15,8 +16,8 @@ class HorizontalDots extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer2<PageOffsetProvider, AnimationController>(
       builder: (context, provider, animation, child) {
-        if (animation.value == 1) {
-          return Container();
+        if (animation.value > 0.25) {
+          return const SizedBox.shrink();
         }
         double spacer;
         double opacity;
@@ -32,57 +33,59 @@ class HorizontalDots extends StatelessWidget {
           top: dotsTopMargin(context),
           child: Opacity(
             opacity: opacity,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(right: 40 * spacer),
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: AppColors.white,
+            child: MapHider(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(right: 40 * spacer),
+                    height: 10,
+                    width: 10,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: AppColors.white,
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 40 * spacer),
-                  height: 10,
-                  width: 10,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.white,
-                    border: Border.all(
+                  Container(
+                    margin: EdgeInsets.only(left: 40 * spacer),
+                    height: 10,
+                    width: 10,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
                       color: AppColors.white,
+                      border: Border.all(
+                        color: AppColors.white,
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 9 * spacer),
-                  height: 5,
-                  width: 5,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.white,
-                    border: Border.all(
+                  Container(
+                    margin: EdgeInsets.only(left: 9 * spacer),
+                    height: 5,
+                    width: 5,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
                       color: AppColors.white,
+                      border: Border.all(
+                        color: AppColors.white,
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(right: 9 * spacer),
-                  height: 5,
-                  width: 5,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.white,
-                    border: Border.all(
+                  Container(
+                    margin: EdgeInsets.only(right: 9 * spacer),
+                    height: 5,
+                    width: 5,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
                       color: AppColors.white,
+                      border: Border.all(
+                        color: AppColors.white,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
