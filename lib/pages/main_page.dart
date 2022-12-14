@@ -2,6 +2,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_animation/pages/leopard_page.dart';
+import 'package:travel_animation/providers/map_provider.dart';
 import 'package:travel_animation/providers/page_offset_provider.dart';
 import 'package:travel_animation/utils/app_colors.dart';
 import 'package:travel_animation/utils/constants.dart';
@@ -13,13 +14,17 @@ import 'package:travel_animation/widgets/texts/start_camp_time_text.dart';
 
 import '../widgets/images/bird_img.dart';
 import '../widgets/icon_btns/drag_arrow.dart';
+import '../widgets/map_widget.dart';
 import '../widgets/shapes/horizontal_dots.dart';
 import '../widgets/shapes/indicators.dart';
 import '../widgets/images/leopard_img.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/icon_btns/share_icon.dart';
+import '../widgets/shapes/vertical_dots.dart';
 import '../widgets/texts/base_camp_time_text.dart';
 import '../widgets/texts/start_camp_text.dart';
+import '../widgets/texts/travel_details_text.dart';
+import '../widgets/vertical_dot_lable.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -31,6 +36,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   final PageController _pageController = PageController();
   AnimationController? _animationController;
+  AnimationController? _mapAnimationController;
   double get maxHeight => mainSquareSize(context) + 32 + 24;
 
   @override
@@ -40,11 +46,17 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       vsync: this,
       duration: const Duration(milliseconds: 1000),
     );
+
+    _mapAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
   }
 
   @override
   void dispose() {
     _animationController?.dispose();
+    _mapAnimationController?.dispose();
     super.dispose();
   }
 
@@ -74,38 +86,55 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       create: (context) => PageOffsetProvider(_pageController),
       child: ListenableProvider.value(
         value: _animationController,
-        child: Scaffold(
-          body: SafeArea(
-              child: GestureDetector(
-            onVerticalDragUpdate: _handleDragUpdate,
-            onVerticalDragEnd: _handleDragEnd,
-            child: Stack(
-              alignment: Alignment.center,
+        child: ChangeNotifierProvider(
+          create: (context) => MapAnimationProvider(_mapAnimationController),
+          child: Scaffold(
+            body: Stack(
               children: [
-                PageView(
-                  controller: _pageController,
-                  physics: const ClampingScrollPhysics(),
-                  children: const [
-                    LeopardPage(),
-                    BirdCircle(),
-                  ],
-                ),
-                const CustomAppBar(),
-                const LeopardImage(),
-                const BirdImage(),
-                const Indicators(),
-                const DragArrow(),
-                const ShareIcon(),
-                OnMapBtn(animController: _animationController),
-                const HorizontalDots(),
-                const StartCampTimeText(),
-                const StartCampText(),
-                const BaseCampText(),
-                const BaseCampTimeText(),
-                const KilometerText(),
+                const MapImage(),
+                SafeArea(
+                    child: GestureDetector(
+                  onVerticalDragUpdate: _handleDragUpdate,
+                  onVerticalDragEnd: _handleDragEnd,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      PageView(
+                        controller: _pageController,
+                        physics: const ClampingScrollPhysics(),
+                        children: const [
+                          LeopardPage(),
+                          BirdCircle(),
+                        ],
+                      ),
+                      const CustomAppBar(),
+                      const LeopardImage(),
+                      const BirdImage(),
+                      const Indicators(),
+                      const DragArrow(),
+                      const ShareIcon(),
+                      const OnMapBtn(),
+                      const StartCampTimeText(),
+                      const HorizontalDots(),
+                      const StartCampText(),
+                      const BaseCampText(),
+                      const BaseCampTimeText(),
+                      const KilometerText(),
+                      const VerticalTravelDots(),
+                      const TravelDetailsText(),
+                      const VultureIconLabel(),
+                      const LeopardIconLabel(),
+                      const MapBaseCamp(),
+                      const MapStartCamp(),
+                      const MapLeopards(),
+                      const MapVultures(),
+                      const CurvedRoute(),
+                    ],
+                  ),
+                )),
               ],
             ),
-          )),
+          ),
         ),
       ),
     );
