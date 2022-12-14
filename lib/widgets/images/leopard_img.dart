@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travel_animation/providers/page_offset_provider.dart';
 
+import '../map_hider.dart';
+
 class LeopardImage extends StatelessWidget {
   const LeopardImage({super.key});
   @override
@@ -20,8 +22,10 @@ class LeopardImage extends StatelessWidget {
           ),
         );
       },
-      child: IgnorePointer(
-        child: Image.asset("assets/leopard.png"),
+      child: MapHider(
+        child: IgnorePointer(
+          child: Image.asset("assets/leopard.png"),
+        ),
       ),
     );
   }

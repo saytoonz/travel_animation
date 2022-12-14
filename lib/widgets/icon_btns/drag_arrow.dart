@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:travel_animation/widgets/map_hider.dart';
 
 import '../../utils/app_colors.dart';
 import '../../utils/constants.dart';
@@ -23,14 +24,17 @@ class DragArrow extends StatelessWidget {
             angle: math.pi * (10 * animation.value) > math.pi
                 ? math.pi
                 : math.pi * (10 * animation.value),
-            child: const Icon(
-              Icons.keyboard_arrow_up,
-              size: 28,
-              color: AppColors.lighterGrey,
-            ),
+            child: child,
           ),
         );
       },
+      child: const MapHider(
+        child: Icon(
+          Icons.keyboard_arrow_up,
+          size: 28,
+          color: AppColors.lighterGrey,
+        ),
+      ),
     );
   }
 }
