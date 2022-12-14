@@ -5,6 +5,7 @@ import 'package:travel_animation/providers/page_offset_provider.dart';
 import 'package:travel_animation/utils/app_colors.dart';
 
 import '../../utils/constants.dart';
+import '../map_hider.dart';
 
 class BaseCampTimeText extends StatelessWidget {
   const BaseCampTimeText({super.key});
@@ -19,6 +20,7 @@ class BaseCampTimeText extends StatelessWidget {
               (mainSquareSize(context) * (1 - animation.value)) +
               16 +
               32 +
+              8 +
               40,
           width: (MediaQuery.of(context).size.width - 48) / 3,
           right: opacity * 24.0,
@@ -28,14 +30,16 @@ class BaseCampTimeText extends StatelessWidget {
           ),
         );
       },
-      child: const Align(
-        alignment: Alignment.centerLeft,
-        child: Text(
-          '02:40 pm',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
-            color: AppColors.lighterGrey,
+      child: const MapHider(
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            '02:40 pm',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w300,
+              color: AppColors.lighterGrey,
+            ),
           ),
         ),
       ),

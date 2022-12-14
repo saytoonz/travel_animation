@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:travel_animation/providers/page_offset_provider.dart';
 import 'package:travel_animation/utils/constants.dart';
 
+import '../map_hider.dart';
+
 class BaseCampText extends StatelessWidget {
   const BaseCampText({super.key});
 
@@ -18,6 +20,7 @@ class BaseCampText extends StatelessWidget {
           top: topMargin(context) +
               (mainSquareSize(context) * (1 - animation.value)) +
               16 +
+              8 +
               32,
           width: (MediaQuery.of(context).size.width - 48) / 3,
           right: opacity * 24,
@@ -27,13 +30,15 @@ class BaseCampText extends StatelessWidget {
           ),
         );
       },
-      child: const Align(
-        alignment: Alignment.centerLeft,
-        child: Text(
-          'Base camp',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
+      child: const MapHider(
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Base camp',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w300,
+            ),
           ),
         ),
       ),
