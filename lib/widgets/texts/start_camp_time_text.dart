@@ -5,6 +5,7 @@ import 'package:travel_animation/providers/page_offset_provider.dart';
 import 'package:travel_animation/utils/app_colors.dart';
 
 import '../../utils/constants.dart';
+import '../map_hider.dart';
 
 class StartCampTimeText extends StatelessWidget {
   const StartCampTimeText({super.key});
@@ -15,7 +16,7 @@ class StartCampTimeText extends StatelessWidget {
       builder: (context, provider, child) {
         double opacity = math.max(0, 4 * provider.page - 3);
         return Positioned(
-          top: topMargin(context) + mainSquareSize(context) + 16 + 32 + 40,
+          top: topMargin(context) + mainSquareSize(context) + 8 + 16 + 32 + 40,
           width: (MediaQuery.of(context).size.width - 48) / 3,
           left: opacity * 24.0,
           child: Opacity(
@@ -24,14 +25,16 @@ class StartCampTimeText extends StatelessWidget {
           ),
         );
       },
-      child: const Align(
-        alignment: Alignment.centerRight,
-        child: Text(
-          '02:40 pm',
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
-            color: AppColors.lighterGrey,
+      child: const MapHider(
+        child: Align(
+          alignment: Alignment.centerRight,
+          child: Text(
+            '02:40 pm',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w300,
+              color: AppColors.lighterGrey,
+            ),
           ),
         ),
       ),
