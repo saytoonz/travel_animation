@@ -8,8 +8,8 @@ A Flutter project.
 ## Animation
 <img src="https://cdn.dribbble.com/users/877784/screenshots/3787326/media/b75a7f3c1a1065d482e0129072a3ad6f.gif">
 
-<!-- ## Flutter project
-<img src="https://cdn.dribbble.com/users/877784/screenshots/3787326/media/b75a7f3c1a1065d482e0129072a3ad6f.gif"> -->
+## Flutter project
+<img src="gif-img.gif">
 
 ## Connect with me
 [<img align="left" alt="Sam | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />](https://twitter.com/saytoonz)
